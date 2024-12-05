@@ -2,14 +2,14 @@
     "version": 2,
     "builds": [
         {
-            "src": "run.py",
+            "src": "Coursework/run.py",
             "use": "@vercel/python"
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/run.py"
+            "dest": "Coursework/run.py"
         }
     ]
 }
