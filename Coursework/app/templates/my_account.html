@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session.user_id %}
+<h1>My Account</h1>
+<br>
+<form name="my_account" method="post">
+    {{ form.hidden_tag() }}
+
+    <!-- Username Field -->
+    <div class="form-group">
+        {{ form.username.label }}
+        {{ form.username(class_='form-control', placeholder='Enter username') }}
+        {% for error in form.username.errors %}
+        <div class="alert alert-danger" role="alert">
+            [{{ error }}]
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+        {{ form.email.label }}
+        {{ form.email(class_='form-control', placeholder='Enter email') }}
+        {% for error in form.email.errors %}
+        <div class="alert alert-danger" role="alert">
+            [{{ error }}]
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Update Account</button>
+</form>
+{% else %}
+   <h1>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('signup') }}">signup</a> to create a Post.</h1>
+{% endif %}
+{% endblock %}
